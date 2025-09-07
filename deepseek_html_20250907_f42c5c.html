@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>روابطي الاجتماعية | اسمك هنا</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(-45deg, #6a11cb, #2575fc, #009efa, #4facfe);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .profile {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 15px;
+        }
+        
+        .profile h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+        
+        .profile p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .link {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 15px 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .link:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .link i {
+            font-size: 24px;
+            margin-left: 15px;
+            width: 30px;
+            text-align: center;
+        }
+        
+        .link-content {
+            flex: 1;
+        }
+        
+        .link-title {
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 3px;
+        }
+        
+        .link-desc {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .audio-player {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .audio-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .audio-title i {
+            margin-left: 10px;
+        }
+        
+        audio {
+            width: 100%;
+            margin-top: 10px;
+            border-radius: 30px;
+        }
+        
+        audio::-webkit-media-controls-panel {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-stats {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 20px;
+        }
+        
+        .stat {
+            padding: 0 15px;
+        }
+        
+        .stat-number {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            opacity: 0.7;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .profile-img {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .profile h1 {
+                font-size: 24px;
+            }
+            
+            .link {
+                padding: 12px 15px;
+            }
+            
+            .link-title {
+                font-size: 16px;
+            }
+        }
+        
+        .floating-icons {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .floating-icon {
+            position: absolute;
+            font-size: 24px;
+            opacity: 0.5;
+            animation: float 10s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- أيقونات عائمة في الخلفية -->
+    <div class="floating-icons" id="floating-icons"></div>
+    
+    <div class="container">
+        <div class="profile">
+            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&q=80" alt="Profile" class="profile-img">
+            <h1>محمد أحمد</h1>
+            <p>مطور واجهات مستخدم | مصمم تجارب</p>
+        </div>
+        
+        <div class="audio-player">
+            <div class="audio-title">
+                <i class="fas fa-music"></i> استمع إلى المقطع الصوتي المفضل لدي
+            </div>
+            <audio controls>
+                <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                متصفحك لا يدعم مشغل الصوت.
+            </audio>
+        </div>
+        
+        <div class="links">
+            <a href="https://instagram.com" class="link" target="_blank">
+                <i class="fab fa-instagram"></i>
+                <div class="link-content">
+                    <div class="link-title">إنستغرام</div>
+                    <div class="link-desc">تابعني على إنستغرام</div>
+                </div>
+            </a>
+            
+            <a href="https://tiktok.com" class="link" target="_blank">
+                <i class="fab fa-tiktok"></i>
+                <div class="link-content">
+                    <div class="link-title">تيك توك</div>
+                    <div class="link-desc">شاهد مقاطعي على تيك توك</div>
+                </div>
+            </a>
+            
+            <a href="https://youtube.com" class="link" target="_blank">
+                <i class="fab fa-youtube"></i>
+                <div class="link-content">
+                    <div class="link-title">يوتيوب</div>
+                    <div class="link-desc">اشترك في قناتي على يوتيوب</div>
+                </div>
+            </a>
+            
+            <a href="https://twitter.com" class="link" target="_blank">
+                <i class="fab fa-twitter"></i>
+                <div class="link-content">
+                    <div class="link-title">تويتر</div>
+                    <div class="link-desc">تابعني على تويتر</div>
+                </div>
+            </a>
+            
+            <a href="https://linkedin.com" class="link" target="_blank">
+                <i class="fab fa-linkedin"></i>
+                <div class="link-content">
+                    <div class="link-title">لينكد إن</div>
+                    <div class="link-desc">تواصل معي على لينكد إن</div>
+                </div>
+            </a>
+        </div>
+        
+        <div class="social-stats">
+            <div class="stat">
+                <div class="stat-number">12.5K</div>
+                <div class="stat-label">متابعين</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">347</div>
+                <div class="stat-label">منشورات</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">68</div>
+                <div class="stat-label">مقاطع</div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            © 2023 جميع الحقوق محفوظة | صمم بكل ❤️
+        </div>
+    </div>
+
+    <script>
+        // إنشاء أيقونات عائمة في الخلفية
+        function createFloatingIcons() {
+            const iconsContainer = document.getElementById('floating-icons');
+            const icons = ['fab fa-instagram', 'fab fa-tiktok', 'fab fa-youtube', 'fab fa-twitter', 
+                          'fab fa-linkedin', 'fas fa-heart', 'fas fa-music', 'fas fa-star'];
+            
+            for (let i = 0; i < 20; i++) {
+                const icon = document.createElement('i');
+                icon.className = icons[Math.floor(Math.random() * icons.length)] + ' floating-icon';
+                
+                // وضع عشوائي
+                icon.style.left = Math.random() * 100 + '%';
+                icon.style.top = Math.random() * 100 + 'vh';
+                
+                // حجم عشوائي
+                const size = Math.random() * 20 + 15;
+                icon.style.fontSize = size + 'px';
+                
+                // تأخير عشوائي للحركة
+                icon.style.animationDuration = (Math.random() * 15 + 10) + 's';
+                icon.style.animationDelay = Math.random() * 5 + 's';
+                
+                iconsContainer.appendChild(icon);
+            }
+        }
+        
+        // تغيير لون الخلفية تدريجياً
+        function changeBackground() {
+            const colors = [
+                'linear-gradient(-45deg, #6a11cb, #2575fc, #009efa, #4facfe)',
+                'linear-gradient(-45deg, #ff6b6b, #ff9a3d, #f6d365, #fda085)',
+                'linear-gradient(-45deg, #00b09b, #96c93d, #00d2ff, #3a7bd5)',
+                'linear-gradient(-45deg, #654ea3, #eaafc8, #6dd5ed, #2193b0)'
+            ];
+            
+            let current = 0;
+            
+            setInterval(() => {
+                document.body.style.background = colors[current];
+                document.body.style.backgroundSize = '400% 400%';
+                current = (current + 1) % colors.length;
+            }, 10000);
+        }
+        
+        // تفعيل عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            createFloatingIcons();
+            changeBackground();
+        });
+    </script>
+</body>
+</html>
